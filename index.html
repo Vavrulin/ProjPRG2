@@ -1,32 +1,58 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
+    <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <title>Evidence knih</title>
+    
 </head>
 <body>
 
-    <h1>Evidence knih a rezervace</h1>
+     <div class="container">
 
-    <h2>Seznam knih</h2>
+        <h1>Evidence knih a rezervace</h1>
 
-    <h2>Přidání knihy</h2>
-    <form>
-        <input type="text" placeholder="Název knihy">
-        <br><br>
-        <input type="text" placeholder="Autor">
-        <br><br>
-        <button>Přidat</button>
-    </form>
+        <div class="section">
+            <h2>Seznam knih</h2>
+            <ul>
+                <li>1984  George Orwell</li>
+                <li>Malý princ  Antoine de Saint-Exupéry</li>
+                <li>Hobit  J. R. R. Tolkien</li>
+            </ul>
+            
+        </div>
 
-    <h2>Rezervace knihy</h2>
-    <form>
-        <input type="text" placeholder="Název knihy">
-        <br><br>
-        <input type="text" placeholder="Jméno">
-        <br><br>
-        <button>Rezervovat</button>
-    </form>
+        <div class="section forms">
+
+            <div class="form-box">
+                <h2>Přidání knihy</h2>
+                <form>
+                    <label>Název knihy</label>
+                    <input type="text">
+
+                    <label>Autor</label>
+                    <input type="text">
+
+                    <button type="submit">Přidat knihu</button>
+                </form>
+            </div>
+
+            <div class="form-box">
+                <h2>Rezervace knihy</h2>
+                <form>
+                    <label>Název knihy</label>
+                    <input type="text">
+
+                    <label>Jméno</label>
+                    <input type="text">
+
+                    <button type="submit">Rezervovat</button>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
 
 </body>
 </html>
