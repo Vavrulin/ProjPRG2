@@ -1,0 +1,98 @@
+/* spolecne pro vsechno */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-container {
+    background-color: #004488;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* hlavni stranka (index.php) */
+.mainhead {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.knihovna {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.kniha {
+    background-color: white;
+    border: 2px solid #004488;
+    border-radius: 5px;
+    width: 250px;
+    padding: 15px;
+    text-align: center;
+}
+
+.kniha h2 {
+    color: #004488;
+    margin-top: 0;
+}
+
+.kniha a {
+    display: inline-block;
+    background-color: #004488;
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 3px;
+    margin-top: 10px;
+}
+
+/* stranka rezervace (rezervace.php) */
+.stred-stranky {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#hlavni-formular {
+    display: inline-block;
+    text-align: left;
+    background: #eeeeee;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+#hlavni-formular input {
+    display: block;
+    margin: 10px 0 20px 0;
+    width: 250px;
+    padding: 5px;
+}
+
+.potvrzovaci-tlacitko {
+    background-color: #008800;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
