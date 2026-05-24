@@ -1,98 +1,340 @@
-/* spolecne pro vsechno */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    margin: 0;
-    padding: 0;
+/* import fontu*/
+@import url('https://googleapis.com');
+
+/* promenne pro barvy*/
+:root {
+  --bg:         #f2ede4;
+  --bg-card:    #fdfaf5;
+  --green-dark: #2f5c3e;
+  --green-mid:  #4a7c5f;
+  --green-soft: #c8dbc8;
+  --accent:     #e8a838;
+  --text:       #2a2a1e;
+  --text-muted: #6b6655;
+  --border:     #d6ccb8;
+  --shadow:     0 4px 20px rgba(47, 92, 62, 0.10);
+  --radius:     12px;
 }
 
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* navbar*/
 .navbar-container {
-    background-color: #004488;
-    color: white;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  background-color: var(--green-dark);
+  padding: 0 2.5rem;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-container h1 {
+  font-family: 'Lora', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.02em;
 }
 
 .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 15px;
+  list-style: none;
+  display: flex;
+  gap: 0.25rem;
 }
 
 .nav-links a {
-    color: white;
-    text-decoration: none;
+  color: rgba(255,255,255,0.82);
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 0.45rem 1rem;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
 }
 
 .nav-links a:hover {
-    text-decoration: underline;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
 }
 
-/* hlavni stranka (index.php) */
+/* hlavni page*/
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 4rem;
+}
+
 .mainhead {
-    text-align: center;
-    margin: 30px 0;
+  font-family: 'Lora', serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--green-dark);
+  margin-bottom: 2rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid var(--green-soft);
 }
 
+/* grid*/
 .knihovna {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
 }
 
+/* knihy*/
 .kniha {
-    background-color: white;
-    border: 2px solid #004488;
-    border-radius: 5px;
-    width: 250px;
-    padding: 15px;
-    text-align: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.6rem 1.4rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.kniha:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(47, 92, 62, 0.16);
 }
 
 .kniha h2 {
-    color: #004488;
-    margin-top: 0;
+  font-family: 'Lora', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--green-dark);
+  text-align: center;
 }
 
-.kniha a {
-    display: inline-block;
-    background-color: #004488;
-    color: white;
-    padding: 8px 15px;
-    text-decoration: none;
-    border-radius: 3px;
-    margin-top: 10px;
+.kniha p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  text-align: center;
 }
 
-/* stranka rezervace (rezervace.php) */
-.stred-stranky {
-    text-align: center;
-    margin-top: 50px;
+/* tlacitka*/
+.button-style {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1.3rem;
+  background: var(--green-mid);
+  color: #fff;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  border-radius: 8px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
 }
 
+.button-style:hover {
+  background: var(--green-dark);
+  transform: translateY(-1px);
+}
+
+/* rezervace */
+.rezervace-wrapper {
+  max-width: 520px;
+  margin: 0 auto;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2.5rem 2.5rem 2rem;
+  box-shadow: var(--shadow);
+}
+
+.rezervace-wrapper h2 {
+  font-family: 'Lora', serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.3rem;
+}
+
+.rezervace-wrapper h1 {
+  font-family: 'Lora', serif !important;
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  color: var(--green-dark) !important;
+  text-align: center !important;
+  margin-bottom: 2rem !important;
+}
+
+/* form rezervace  */
 #hlavni-formular {
-    display: inline-block;
-    text-align: left;
-    background: #eeeeee;
-    padding: 20px;
-    border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+#hlavni-formular label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-top: 0.6rem;
+  letter-spacing: 0.02em;
 }
 
 #hlavni-formular input {
-    display: block;
-    margin: 10px 0 20px 0;
-    width: 250px;
-    padding: 5px;
+  width: 100%;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.potvrzovaci-tlacitko {
-    background-color: #008800;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
+#hlavni-formular input:focus {
+  border-color: var(--green-mid);
+  box-shadow: 0 0 0 3px rgba(74, 124, 95, 0.15);
 }
+
+/* submit butn*/
+.potvrzovaci-tlacitko {
+  margin-top: 1.4rem;
+  width: 100%;
+  padding: 0.75rem;
+  background: var(--green-dark);
+  color: #fff;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.97rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  letter-spacing: 0.02em;
+}
+
+.potvrzovaci-tlacitko:hover {
+  background: var(--green-mid);
+  transform: translateY(-1px);
+}
+
+/* centrovani tlacitek*/
+.center-box {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.2rem;
+}
+
+.center-box .button-style {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.45rem 1.1rem;
+}
+
+.center-box .button-style:hover {
+  background: var(--green-soft);
+  color: var(--green-dark);
+  border-color: var(--green-soft);
+}
+
+/* table s rezervacemi*/
+.tabulka-rezervaci {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  font-size: 0.93rem;
+}
+
+.tabulka-rezervaci thead {
+  background: var(--green-dark);
+}
+
+.tabulka-rezervaci thead th {
+  color: rgba(255,255,255,0.9);
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 0.9rem 1.2rem;
+  text-align: left;
+}
+
+.tabulka-rezervaci tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+}
+
+.tabulka-rezervaci tbody tr:last-child {
+  border-bottom: none;
+}
+
+.tabulka-rezervaci tbody tr:hover {
+  background: #eef5ee;
+}
+
+.tabulka-rezervaci td {
+  padding: 0.85rem 1.2rem;
+  color: var(--text);
+  vertical-align: middle;
+}
+
+/* delete butn*/
+.tlacitko-smazat {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  background: transparent;
+  color: #b94040;
+  border: 1px solid #d4a0a0;
+  border-radius: 7px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.83rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
+}
+
+.tlacitko-smazat:hover {
+  background: #b94040;
+  color: #fff;
+  border-color: #b94040;
+}
+
+/* odkazy */
+main p a {
+  color: var(--green-mid);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.9rem;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+main p a:hover {
+  border-bottom-color: var(--green-mid);
+}
+
+.knihovna .knihovna { display: contents; }

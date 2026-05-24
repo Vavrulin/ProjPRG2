@@ -12,9 +12,8 @@
         <h1>Moje Knihovna</h1>
         <nav>
             <ul class="nav-links">
-                <li><a href="#">Domů</a></li>
-                <li><a href="#">Knihy</a></li>
-                <li><a href="#">Moje rezervace</a></li>
+                <li><a href="index.php">Domů</a></li>
+                <li><a href="vypis-rezervaci.php">Moje rezervace</a></li>
             </ul>
         </nav>
     </header>
@@ -31,7 +30,7 @@
                         echo '<div class="kniha">';
                         echo '    <h2>' . $kniha['nazev'] . '</h2>';
                         echo '    <p>Autor: ' . $kniha['autor'] . '</p>';
-                        echo '    <a href="rezervace.php?kniha=' . urlencode($kniha['nazev']) . '">Rezervovat</a>';
+                        echo '    <a href="rezervace.php?kniha=' . urlencode($kniha['nazev']) . ' " class="button-style">Rezervovat</a>';
                         echo '</div>';
                         }
                     ?>
