@@ -1,22 +1,50 @@
-<?php
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Rezervace - Moje Knihovna</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-include 'db.php';
+    <header class="navbar-container">
+        <h1>Moje Knihovna</h1>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.php">Domů</a></li>
+                <li><a href="vypis-rezervaci.php">Moje rezervace</a></li>
+            </ul>
+        </nav>
+    </header>
 
-$jmeno = $_POST['form_jmeno'];
-$email = $_POST['form_email'];
-$telefon = $_POST['form_tel'];
-$kniha = $_POST['form_kniha'];
+    <main>
+        <div class="rezervace-wrapper">
+            <?php
+                include 'db.php';
 
-$sql = "INSERT INTO rezervace (jmeno, email, telefon, kniha) VALUES ('$jmeno', '$email', '$telefon', '$kniha')";
+                $jmeno   = $_POST['form_jmeno'];
+                $email   = $_POST['form_email'];
+                $telefon = $_POST['form_tel'];
+                $kniha   = $_POST['form_kniha'];
 
-if (mysqli_query($spojeni, $sql)) {
-    echo "Rezervace ulozena!";
-    echo '<p><a href="index.php" style="text-decoration: none; background-color: #3498db; color: white; padding: 10px 20px; border-radius: 5px;">Zpět na hlavní stránku</a></p>';
-} else {
-    
-    echo "CHYBA DATABÁZE: " . mysqli_error($spojeni);
-}
+                $sql = "INSERT INTO rezervace (jmeno, email, telefon, kniha) VALUES ('$jmeno', '$email', '$telefon', '$kniha')";
 
+                if (mysqli_query($spojeni, $sql)) {
+                    echo '<h2>Hotovo</h2>';
+                    echo '<h1>' . htmlspecialchars($kniha) . '</h1>';
+                    echo '<p style="text-align:center; color:#6b6655; margin-bottom: 1.5rem;">Rezervace byla úspěšně uložena!</p>';
+                } else {
+                    echo '<p style="text-align:center; color:#b94040;">CHYBA DATABÁZE: ' . mysqli_error($spojeni) . '</p>';
+                }
 
-mysqli_close($spojeni);
-?>
+                mysqli_close($spojeni);
+            ?>
+
+            <div class="center-box">
+                <a href="index.php" class="button-style">Zpět na hlavní stránku</a>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

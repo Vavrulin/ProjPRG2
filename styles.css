@@ -338,3 +338,28 @@ main p a:hover {
 }
 
 .knihovna .knihovna { display: contents; }
+
+/* nedostupne knihy */
+.kniha.nedostupna {
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.status-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: 'Nunito', sans-serif;
+  color: #b94040;
+  background: #fdeaea;
+  border: 1px solid #e8b4b4;
+  border-radius: 20px;
+  padding: 0.2rem 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.button-style.disabled {
+  background: #c8c0b0;
+  cursor: not-allowed;
+  pointer-events: none;
+}

@@ -24,17 +24,31 @@
                 <div class="knihovna">
                     <?php
                         include 'db.php';
-                        $vysledek = mysqli_query($spojeni, "SELECT * FROM seznam_knih");
+                         $vysledek = mysqli_query($spojeni, "SELECT * FROM seznam_knih");
 
                         while($kniha = mysqli_fetch_assoc($vysledek)) {
-                        echo '<div class="kniha">';
-                        echo '    <h2>' . $kniha['nazev'] . '</h2>';
-                        echo '    <p>Autor: ' . $kniha['autor'] . '</p>';
-                        echo '    <a href="rezervace.php?kniha=' . urlencode($kniha['nazev']) . ' " class="button-style">Rezervovat</a>';
-                        echo '</div>';
+
+                                $nazev_safe = mysqli_real_escape_string($spojeni, $kniha['nazev']);
+                                $kontrola   = mysqli_query($spojeni, "SELECT id FROM rezervace WHERE kniha = '$nazev_safe' LIMIT 1");
+                                $dostupna   = mysqli_num_rows($kontrola) === 0;
+
+                                $card_class   = $dostupna ? 'kniha' : 'kniha nedostupna';
+                                $btn_class    = $dostupna ? 'button-style' : 'button-style disabled';
+                                $href         = $dostupna ? 'href="rezervace.php?kniha=' . urlencode($kniha['nazev']) . '"' : '';
+
+                                echo '<div class="' . $card_class . '">';
+                                echo '  <h2>' . htmlspecialchars($kniha['nazev']) . '</h2>';
+                                echo '  <p>Autor: ' . htmlspecialchars($kniha['autor']) . '</p>';
+
+                                if (!$dostupna) {
+                                    echo '  <span class="status-label">Nedostupné</span>';
+                                }
+
+                                echo '  <a ' . $href . ' class="' . $btn_class . '">Rezervovat</a>';
+                                echo '</div>';
                         }
                     ?>
-</div>
+            </div>
 
         </div>
     </main>
