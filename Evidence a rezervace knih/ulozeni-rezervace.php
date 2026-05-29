@@ -8,7 +8,7 @@
 <body>
 
     <header class="navbar-container">
-        <h1>Moje Knihovna</h1>
+        <h1>Evidence a rezervace knih</h1>
         <nav>
             <ul class="nav-links">
                 <li><a href="index.php">Domů</a></li>
@@ -22,16 +22,16 @@
             <?php
                 include 'db.php';
 
-                $jmeno   = $_POST['form_jmeno'];
-                $email   = $_POST['form_email'];
+                $jmeno = $_POST['form_jmeno'];
+                $email = $_POST['form_email'];
                 $telefon = $_POST['form_tel'];
-                $kniha   = $_POST['form_kniha'];
+                $kniha_id = $_POST['form_kniha_id'];
 
-                $sql = "INSERT INTO rezervace (jmeno, email, telefon, kniha) VALUES ('$jmeno', '$email', '$telefon', '$kniha')";
+                $sql = "INSERT INTO rezervace (jmeno, email, telefon, kniha_id) VALUES ('$jmeno', '$email', '$telefon', '$kniha_id')";
 
                 if (mysqli_query($spojeni, $sql)) {
                     echo '<h2>Hotovo</h2>';
-                    echo '<h1>' . htmlspecialchars($kniha) . '</h1>';
+                    echo '<h1>Rezervace byla vytvořena</h1>';
                     echo '<p style="text-align:center; color:#6b6655; margin-bottom: 1.5rem;">Rezervace byla úspěšně uložena!</p>';
                 } else {
                     echo '<p style="text-align:center; color:#b94040;">CHYBA DATABÁZE: ' . mysqli_error($spojeni) . '</p>';
@@ -45,6 +45,14 @@
             </div>
         </div>
     </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-logo">Evidence a rezervace knih</span>
+            <span class="footer-text">Jednoduchá správa výpůjček knih</span>
+            <span class="footer-year">© <?php echo date('Y'); ?></span>
+        </div>
+    </footer>
 
 </body>
 </html>

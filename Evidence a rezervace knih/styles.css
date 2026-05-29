@@ -24,6 +24,8 @@ body {
   background-color: var(--bg);
   color: var(--text);
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* navbar*/
@@ -60,13 +62,8 @@ body {
   font-size: 0.92rem;
   font-weight: 600;
   padding: 0.45rem 1rem;
-  border-radius: 8px;
+  border-radius: 0px;
   transition: background 0.2s, color 0.2s;
-}
-
-.nav-links a:hover {
-  background: rgba(255,255,255,0.12);
-  color: #fff;
 }
 
 /* hlavni page*/
@@ -74,6 +71,8 @@ main {
   max-width: 1100px;
   margin: 0 auto;
   padding: 2.5rem 2rem 4rem;
+  flex-grow: 1;
+  width: 100%;
 }
 
 .mainhead {
@@ -93,23 +92,23 @@ main {
   gap: 1.5rem;
 }
 
+/* oprava vnorenych divu knihovna */
+.knihovna .knihovna { display: contents; }
+
 /* knihy*/
 .kniha {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 0;
   padding: 1.6rem 1.4rem 1.4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.55rem;
   box-shadow: var(--shadow);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.kniha:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 28px rgba(47, 92, 62, 0.16);
+  overflow: hidden;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .kniha h2 {
@@ -124,6 +123,8 @@ main {
   font-size: 0.88rem;
   color: var(--text-muted);
   text-align: center;
+  margin-bottom: auto;
+  padding-bottom: 15px;
 }
 
 /* tlacitka*/
@@ -136,16 +137,11 @@ main {
   font-family: 'Nunito', sans-serif;
   font-size: 0.88rem;
   font-weight: 700;
-  border-radius: 8px;
+  border-radius: 0px;
   text-decoration: none;
   border: none;
   cursor: pointer;
-  transition: background 0.2s, transform 0.15s;
-}
-
-.button-style:hover {
-  background: var(--green-dark);
-  transform: translateY(-1px);
+  transition: background 0.2s;
 }
 
 /* rezervace */
@@ -154,7 +150,7 @@ main {
   margin: 0 auto;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 0;
   padding: 2.5rem 2.5rem 2rem;
   box-shadow: var(--shadow);
 }
@@ -198,7 +194,7 @@ main {
   width: 100%;
   padding: 0.65rem 0.9rem;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 0px;
   background: var(--bg);
   font-family: 'Nunito', sans-serif;
   font-size: 0.95rem;
@@ -223,15 +219,9 @@ main {
   font-size: 0.97rem;
   font-weight: 700;
   border: none;
-  border-radius: 8px;
+  border-radius: 0px;
   cursor: pointer;
-  transition: background 0.2s, transform 0.15s;
-  letter-spacing: 0.02em;
-}
-
-.potvrzovaci-tlacitko:hover {
-  background: var(--green-mid);
-  transform: translateY(-1px);
+  transition: background 0.2s;
 }
 
 /* centrovani tlacitek*/
@@ -250,19 +240,13 @@ main {
   padding: 0.45rem 1.1rem;
 }
 
-.center-box .button-style:hover {
-  background: var(--green-soft);
-  color: var(--green-dark);
-  border-color: var(--green-soft);
-}
-
 /* table s rezervacemi*/
 .tabulka-rezervaci {
   width: 100%;
   border-collapse: collapse;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 0;
   overflow: hidden;
   box-shadow: var(--shadow);
   font-size: 0.93rem;
@@ -285,15 +269,10 @@ main {
 
 .tabulka-rezervaci tbody tr {
   border-bottom: 1px solid var(--border);
-  transition: background 0.15s;
 }
 
 .tabulka-rezervaci tbody tr:last-child {
   border-bottom: none;
-}
-
-.tabulka-rezervaci tbody tr:hover {
-  background: #eef5ee;
 }
 
 .tabulka-rezervaci td {
@@ -307,20 +286,13 @@ main {
   display: inline-block;
   padding: 0.35rem 0.85rem;
   background: transparent;
-  color: #b94040;
-  border: 1px solid #d4a0a0;
-  border-radius: 7px;
+  border-radius: 0px;
   font-family: 'Nunito', sans-serif;
   font-size: 0.83rem;
   font-weight: 700;
   text-decoration: none;
   transition: background 0.18s, color 0.18s, border-color 0.18s;
-}
-
-.tlacitko-smazat:hover {
-  background: #b94040;
-  color: #fff;
-  border-color: #b94040;
+  color: #2a2a1e;
 }
 
 /* odkazy */
@@ -329,15 +301,7 @@ main p a {
   font-weight: 600;
   text-decoration: none;
   font-size: 0.9rem;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.2s;
 }
-
-main p a:hover {
-  border-bottom-color: var(--green-mid);
-}
-
-.knihovna .knihovna { display: contents; }
 
 /* nedostupne knihy */
 .kniha.nedostupna {
@@ -346,20 +310,58 @@ main p a:hover {
 }
 
 .status-label {
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-size: 0.82rem;
   font-family: 'Nunito', sans-serif;
-  color: #b94040;
-  background: #fdeaea;
-  border: 1px solid #e8b4b4;
-  border-radius: 20px;
-  padding: 0.2rem 0.75rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  color: #6b6655;
 }
 
 .button-style.disabled {
   background: #c8c0b0;
   cursor: not-allowed;
   pointer-events: none;
+}
+
+/* footer */
+.footer {
+  background: var(--green-dark);
+  margin-top: auto;
+  padding: 1.2rem 2.5rem;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.footer-logo {
+  font-family: 'Lora', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.footer-text {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.55);
+}
+
+.footer-year {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.55);
+}
+
+/* obalka knihy*/
+.kniha-cover {
+  width: 100%;
+  margin: 0 auto 0.4rem auto;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 0;
+  margin-bottom: 0.4rem;
+  display: block;
+  object-position: center;
 }
